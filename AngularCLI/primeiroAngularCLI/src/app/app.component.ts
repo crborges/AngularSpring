@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Firmizinho negao';
+  title = 'lista de tarefas';
+  /* criar um array para isnseri as tarefas simplesmente um atribut de classe */
+  tasks=[];
+  task="";
+  add():void{
+    /* pega o array e para cada insersão no campo la no form eu insiro na ariavel aqui do sistmea e vou populando */
+    this.tasks.push(this.task);
+  }
 }
