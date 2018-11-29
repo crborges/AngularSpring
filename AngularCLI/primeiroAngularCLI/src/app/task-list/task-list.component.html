@@ -1,0 +1,31 @@
+<h1>{{title}}</h1>
+<br>
+<!--
+agora que la na classe tem a variavel tasks vamos vincular a variavel na classe com o campo da telsa
+via na diretiva ng-model [()]
+-->
+<input type="text" [(ngModel)]="task">
+  <!--
+    vinncular uam funcao no click do botao via angular
+
+    no click ele vai chamar a função add que esta no typescript
+  -->
+
+<button type="button" (click)="add()" >inserir na lista</button>
+<!-- criar uma lsita para mostrar o conteudo do objetos tasks-->
+<ul>
+    <!--
+      aqui vou usar o tal do NNG-FOR para mostrar as coisas da minha variavel
+      tenho que tipo jstl criar uma variavel para mostrasr os itens
+      e rodar os itens do array la do typeScript
+      esses arquivos estão vinvulaods entere si pelo andulag la no typescript
+    -->
+    <li *ngFor="let item of tasks" >
+      {{item}}
+    </li>
+</ul>
+
+
+<!--
+chamando o componente que eu acabei de criar e vou usar aqui
+-->
