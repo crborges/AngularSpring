@@ -10,6 +10,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./task-list.component.css']
 })
 export class TaskListComponent {
+  /*
+  vou criar uma variavel para poder usar no html depois
+  */
+  IsAdmin = true;
+
+
   title = 'lista de tarefas';
   /*
     criar um array para isnseri as tarefas simplesmente um atribut de classe

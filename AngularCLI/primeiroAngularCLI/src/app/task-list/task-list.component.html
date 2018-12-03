@@ -20,12 +20,32 @@ via na diretiva ng-model [()]
       e rodar os itens do array la do typeScript
       esses arquivos estão vinvulaods entere si pelo andulag la no typescript
     -->
+
+    <li *ngFor="let item of tasks" [innerHTML]="item">
+
+    </li>
+
+      <!--
     <li *ngFor="let item of tasks" >
       {{item}}
     </li>
+    -->
 </ul>
 
 
 <!--
 chamando o componente que eu acabei de criar e vou usar aqui
 -->
+<!--
+  vou usar uma variavel criada na minha classe para controlar
+  uma variavel is admin(podia ser o retorno de algo)
+  essa variavel vai mostar algo so para o administrador
+-->
+<div  [hidden]="IsAdmin">
+so para o admin
+</div>
+
+<div  [hidden]="!IsAdmin">
+para usuario comum
+  </div>
+
