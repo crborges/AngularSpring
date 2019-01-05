@@ -1,0 +1,39 @@
+<html>
+    <head>
+      <title>Formul&aacute;rio</title>
+    </head>
+    <body>
+        <!-- cria uma tag para referenciar o ngfotmr do angular e ter acesso aos seus metodos e poder usa-los para poder validar ele-->
+        <form #form="ngForm">
+           <div>
+          <label for="nome">Nome</label>
+          <!--Uso uma diretiva ngmodel que serve para bindar um e trablahr com formularios entre o meu html e TS-->
+          <!-- para saber o estado atual do campo preciso ter um referencia ao campo
+          COM #nomeelemento
+          -->
+          <input type="text" id="nome" name="nome" [(ngModel)]="nome" #nameVerificado="ngModel" required>
+          <!--Vamos mostrar o estado aqui-->
+          <span *ngIf="nameVerificado.invalid" > Este campo agora e invalido</span>
+          <span *ngIf="nameVerificado.valid" > Este campo agora e valido</span>
+          <!--Podemos ter as seguintes validacoes
+            required        - obrigatorio
+            patern-regex    - respeita um expressao regular x
+            minlength       - Tamanho minimo
+            maxlength       - Tamanho maximo
+          -->
+        </div>
+        <br>
+        <div>
+          <label for="email">E-mail</label>
+          <input type="text" id="email" name="email" [(ngModel)]="email" #mailverificado="ngModel" email>
+          <span *ngIf="mailverificado.invalid" > Este campo agora e invalido</span>
+          <span *ngIf="mailverificado.valid" > Este campo agora e valido</span>
+        </div>
+        <br>
+        <!-- vou usar um property bind para o disable do botão se o form  for nao valido o botao fica desabilitado-->
+        <button type="submit" [disabled]="!form.valid">Enviar</button>
+      </form>
+    </body>
+</html>
+
+
