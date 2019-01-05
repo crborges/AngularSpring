@@ -1,3 +1,32 @@
-
-
+<h1>{{title}}</h1>
+<br/>
 <app-task-list></app-task-list>
+
+
+<!-- pipes basicos do angular-->
+<br/>
+{{user| json}} <!-- apresenta conteudo json-->
+<br/>
+{{upperText | uppercase}}<!-- apresenta conteudo caixa alta-->
+<br/>
+{{lowerText | lowercase}}<!-- apresenta conteudo caixa baixa-->
+<br/>
+{{ percentual  | percent}}<!-- apresenta conteudo no formato percentual do numero-->
+<br/>
+{{sysdate  | date: 'dd/MM/yyyy'}}<!-- apresenta conteudo do tipo data(passar a mascara)-->
+<br/>
+{{grana | currency }}<!-- apresenta conteudo monetario-->
+<!-- pipes basicos do angular-->
+<br/><br/><br/>
+
+
+<!--tem que por o * para usar a forma abreviada da diretiva e um if padrão no caso ai se isadmin == true então mostra um coisa-->
+<div *ngIf="isAdmin"> Conteúdo do admin</div>
+<br/>
+<!-- diretiva switch case do angular-->
+<div [ngSwitch]="profile" >
+  <p *ngSwitchCase="1">você tem o primeiro perfil desta app</p>
+  <p *ngSwitchCase="2">você tem o segundo perfil desta app</p>
+  <p *ngSwitchDefault>você não pode ver nada</p>
+</div>
+

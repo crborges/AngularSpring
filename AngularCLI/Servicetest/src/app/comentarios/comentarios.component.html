@@ -1,0 +1,13 @@
+<!-- HTML do componente de visalizacao de comentarios
+Simplesmente pega da classe .ts vinculada o Array de comentarios retornado e itera num laço for do angular
+
+-->
+<div>
+  <!-- Cria uma variavel de nome comentarios que vai iterar o array de nome comentarios criado na classe .ts vinculada ao html do componente-->
+  <ul *ngFor="let comentarios of comentarios">
+
+    <li>{{ comentarios.id }} - {{ comentarios.name }}</li>
+        {{ comentarios.body }}
+     </ul>
+
+</div>

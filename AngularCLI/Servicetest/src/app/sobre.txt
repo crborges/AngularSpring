@@ -1,0 +1,19 @@
+aplicacao que consome um servico externo e apresenta os seus dados na tela em angular 7
+composta da seguinte extrutura
+
+Arquivos padrão do angular
+
+app.component.css         - Arquivo de CSS do componente main
+app.component.html        - Arquivo HTML do componente main
+app.component.ts          - TypeScript do componente principal
+app.module.ts             - Arquivo de declaração da minha aplicação(modulo) que carrega toda a tralha que eu preciso
+app-routing.module.ts     - XXXXX
+app.component.spec.ts     - XXXXX
+
+
+
+  /model                  - Classes pojo do meu modelo do dominio do aplicacao
+  /control                - Classes de  controle do aplicativo
+  /comentarios            - As minha views
+
+
