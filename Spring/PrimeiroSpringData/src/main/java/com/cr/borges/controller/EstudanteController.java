@@ -14,7 +14,7 @@ import com.cr.borges.entity.Estudante;
 import com.cr.borges.repository.EstudanteRepository;
 
 @RestController
-@RequestMapping(value="/estudante")
+
 public class EstudanteController {
 	
 	@Autowired  //anotacoa utilizada a gerenciamento de dependencias do spring para as classes de acessoa o banco 
