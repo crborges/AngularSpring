@@ -1,0 +1,4 @@
+com\cr\borges\boot\PrimeiroSpringDataApplication.class
+com\cr\borges\controller\EstudanteController.class
+com\cr\borges\entity\Estudante.class
+com\cr\borges\repository\EstudanteRepository.class
