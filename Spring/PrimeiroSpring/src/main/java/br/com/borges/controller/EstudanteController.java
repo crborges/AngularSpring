@@ -1,7 +1,5 @@
 package br.com.borges.controller;
 
-
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,19 +14,27 @@ import br.com.borges.entity.Estudante;
 @RestController
 public class EstudanteController {
 	
-	@Autowired  //anotacoa utilizada a gerenciamento de dependencias do spring para as classes de acessoa o banco 
-	EstudanteRepository estudanteRepository;
+	@Autowired
+	EstudanteRepository estudanteRepositiry;
 	
 	
-	@RequestMapping("/lista")
-	public List<Estudante> lista(){
-		return this.estudanteRepository.findAll();
+	
+	@RequestMapping(value="/estudante" , method=RequestMethod.GET)
+	public List<Estudante> listarEstudantes(){
+		return this.estudanteRepositiry.findAll();
 	}
 	
-	@RequestMapping(value="/salva" , method=RequestMethod.POST)
-	public Estudante inserir(@RequestBody Estudante estudante){
-				return this.estudanteRepository.save(estudante);
-		
+	
+	
+	@RequestMapping(value="/estudante" , method=RequestMethod.POST)
+	public Estudante salvar(@RequestBody Estudante Estudante) {
+		return this.estudanteRepositiry.save(Estudante);
 	}
 	
+	
+	
+	
+	
+	
+
 }
