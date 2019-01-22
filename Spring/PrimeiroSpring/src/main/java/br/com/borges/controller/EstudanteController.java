@@ -16,32 +16,32 @@ import br.com.borges.entity.Estudante;
 public class EstudanteController {
 	
 	@Autowired
-	EstudanteRepository estudanteRepositiry;
+	EstudanteRepository EstudanteRepository;
 	
 	
 	
 	@RequestMapping(value="/estudante" , method=RequestMethod.GET)
 	public List<Estudante> listarEstudantes(){
-		return this.estudanteRepositiry.findAll();
+		return this.EstudanteRepository.findAll();
 	}
 	
 	
 	
 	@RequestMapping(value="/estudante" , method=RequestMethod.POST)
 	public Estudante salvar(@RequestBody Estudante Estudante) {
-		return this.estudanteRepositiry.save(Estudante);
+		return this.EstudanteRepository.save(Estudante);
 	}
 	
 	
 	@RequestMapping(value="/estudante/{id}" , method=RequestMethod.GET)
 	public Estudante getById(@PathVariable String id) {
-		return this.estudanteRepositiry.findOne(id);
+		return this.EstudanteRepository.findOne(id);
 	}
 		
 		
 	@RequestMapping(value="/estudante/{nome}/nome" , method=RequestMethod.GET)
 	public List<Estudante> findByName(@PathVariable String nome) {
-		return this.estudanteRepositiry.findByNameLikeIgnoreCase(nome);
+		return this.EstudanteRepository.findByNameLikeIgnoreCase(nome);
 	}
 	
 	

@@ -1,4 +1,4 @@
-package br.com.borges.boot;
+package br.com.borges;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
