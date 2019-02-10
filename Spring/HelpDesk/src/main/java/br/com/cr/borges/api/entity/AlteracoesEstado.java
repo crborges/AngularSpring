@@ -10,7 +10,9 @@ import br.com.cr.borges.api.enums.EstadosEnum;
 
 @Document
 public class AlteracoesEstado {
-	
+	/*@POJO 
+	  	Representa as varias alteraçoes de estado que um ticket pode ter diurante o seu ciclo de vida
+	 */
 	
 	
 	@Id

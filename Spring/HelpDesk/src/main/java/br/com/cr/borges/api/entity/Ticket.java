@@ -13,7 +13,10 @@ import br.com.cr.borges.api.enums.PrioridadeEnum;
 
 @Document
 public class Ticket {
-	
+	/*@POJO 
+  		Representa um incidente que vamos inserir no nosso sistema
+	*/
+
 	
 	
 	@Id

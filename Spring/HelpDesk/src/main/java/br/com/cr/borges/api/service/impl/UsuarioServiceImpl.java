@@ -10,7 +10,7 @@ import br.com.cr.borges.api.entity.Usuario;
 import br.com.cr.borges.api.repository.UsuarioRepository;
 import br.com.cr.borges.api.service.UsuarioService;
 
-
+/*implementacao concreta da interface com os metodos que dão suporte a manipulacao do usuario com acesso ao DAO do usuario para isso*/
 @Service
 public class UsuarioServiceImpl implements UsuarioService{
 	@Autowired
@@ -18,19 +18,23 @@ public class UsuarioServiceImpl implements UsuarioService{
 
 	@Override
 	public Usuario findByEmail(String email) 					{
-		return this.usuarioRepository.findByEmail(email);		}
+		return this.usuarioRepository.findByEmail(email);		
+	}
 	
 	@Override
 	public Usuario criarOuAtualizar(Usuario usuario) 			{
-		return this.usuarioRepository.save(usuario);			}
+		return this.usuarioRepository.save(usuario);			
+	}
 	
 	@Override
 	public Usuario findById(String id) 							{
-		return this.usuarioRepository.findOne(id);				}
+		return this.usuarioRepository.findOne(id);				
+	}
 	
 	@Override
 	public void deletar(String id) 								{
-		this.usuarioRepository.delete(id);						}
+		this.usuarioRepository.delete(id);						
+	}
 	
 	@Override
 	public Page<Usuario> findAll(int pagina, int contador) 		{

@@ -8,7 +8,10 @@ public interface UsuarioRepository extends MongoRepository<Usuario, String>{
 
 	/*usando find by- campo o spring data se vira de fazer o resto
 	 *o metodo  findByEmail busca usuarios por emai e quem se preocupa como isso funciona e o proprio spring data
-	 */
+	
+		get by email full @param email do usaurio
+		
+	*/
 	Usuario findByEmail(String email);
 	
 }

@@ -16,10 +16,11 @@ public class JwtUserDetailsServiceImpl  implements UserDetailsService{
 
 
 	
-	
+	/*carrega o service do usuario para  poder recupersar ele depois*/
 	@Autowired
 	private UsuarioService usuarioService;
 	
+	/*sobrescreve o loadusuario do spring para a minha realidade onde tenhoq ue buiscar o usuario por email ja o do spring e so um inerface que rpecisa de uma construção concreta*/
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 		Usuario user	= usuarioService.findByEmail(email);

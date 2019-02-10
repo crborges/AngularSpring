@@ -12,6 +12,9 @@ import br.com.cr.borges.api.enums.PerfilEnum;
 
 @Document
 public class Usuario {
+	/*@POJO 
+  		Representa o usuário que se autentica no nosso sistema e que abre e manipula incidentes
+	 */
 
 	
 	

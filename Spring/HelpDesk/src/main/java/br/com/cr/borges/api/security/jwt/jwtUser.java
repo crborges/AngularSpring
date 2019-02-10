@@ -9,8 +9,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 public class jwtUser implements UserDetails{
 
-	/**
-	 * 
+	/*
+	 @POJO que representa o objeto todo de autenticacao do usauruio quer contem o seu user a seua senha e uma list das prermissoes do usuario esse pojo e o que vai ser inserido no token
 	 */
 	private static final long serialVersionUID = 1L;
 	private final String id;
@@ -18,6 +18,7 @@ public class jwtUser implements UserDetails{
 	private final String password;
 	private final Collection<? extends GrantedAuthority> authorities;
 	
+	/*cosntrutor para criar o ohbjeto de usuario para o login*/
 	public jwtUser(String id, String username, String password, Collection<? extends GrantedAuthority> authorities) {
 		this.id = id;
 		this.username = username;

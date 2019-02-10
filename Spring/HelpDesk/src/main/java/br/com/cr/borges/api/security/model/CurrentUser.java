@@ -1,7 +1,9 @@
 package br.com.cr.borges.api.security.model;
 
 import br.com.cr.borges.api.entity.Usuario;
-
+/*
+ @POJO que representa o usuario atual da aplicação
+ * */
 public class CurrentUser {
 
 	private String token; 

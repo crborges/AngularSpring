@@ -2,7 +2,9 @@ package br.com.cr.borges.api.enums;
 
 
 public enum EstadosEnum {
-
+	/*
+		@enum enumeração que representa todos os estados possiveis de um incidente  
+	 */
 	NOVO,
 	DESIGNADO,
 	RESOLVIDO,
