@@ -26,6 +26,7 @@ public class Ticket {
 	private Date data;
 	private String titulo;
 	private Integer numero;
+	@DBRef(lazy=true)
 	private Usuario usuarioAtribuido;
 	private String descricao;
 	private String imagem;

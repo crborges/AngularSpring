@@ -37,11 +37,11 @@ public class HelpDeskApplication {
 	 */
 	private void initUsers(UsuarioRepository usuarioRepository, PasswordEncoder passwordEncoder) {
 		Usuario admin = new Usuario();
-		admin.setEmail("mail@mail.com");
+		admin.setEmail("admin@mail.com");
 		admin.setSenha(passwordEncoder.encode("123456"));
 		admin.setPerfil(PerfilEnum.ROLE_ADMIN);
 		
-		Usuario getter = usuarioRepository.findByEmail("mail@mail.com");
+		Usuario getter = usuarioRepository.findByEmail("admin@mail.com");
 		if(getter==null) {
 			usuarioRepository.save(admin);
 		}
