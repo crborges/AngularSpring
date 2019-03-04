@@ -42,7 +42,7 @@ public interface TicketRepository extends MongoRepository<Ticket, String>{
 	 	Titulo do incidente com ignore case e like full
 	 	estado inincidente com ignore case e like full
 	 	prioridade do incidente com ignore case e like full
-	 	id do usuario com ignore case e like full
+	 	id do usuario 
 	  	order by data decrescente
 	 @param
 	 	titulo
@@ -50,7 +50,7 @@ public interface TicketRepository extends MongoRepository<Ticket, String>{
 	 	prioridade
 	 	id do usuario
 	*/
-	Page<Ticket> findByTituloIgnoreCaseContainingAndEstadoIgnoreCaseContainingAndPrioridadeIgnoreCaseContainingAndUsuarioIdIgnoreCaseContainingOrderByDataDesc(Pageable pages,String titulo,String estado,String prioridade,String usuarioId);
+	Page<Ticket> findByTituloIgnoreCaseContainingAndEstadoIgnoreCaseContainingAndPrioridadeIgnoreCaseContainingAndUsuarioIdOrderByDataDesc(Pageable pages,String titulo,String estado,String prioridade,String usuarioId);
 
 	/*
 	Get by 
@@ -65,12 +65,12 @@ public interface TicketRepository extends MongoRepository<Ticket, String>{
 	 	prioridade
 	 	id do usuario atribuido
 	*/
-	Page<Ticket> findByTituloIgnoreCaseContainingAndEstadoIgnoreCaseContainingAndPrioridadeIgnoreCaseContainingAndUsuarioAtribuidoIdIgnoreCaseContainingOrderByDataDesc(Pageable pages,String titulo,String estado,String prioridade,String usuarioAtribuidoId);
+	Page<Ticket> findByTituloIgnoreCaseContainingAndEstadoIgnoreCaseContainingAndPrioridadeIgnoreCaseContainingAndUsuarioAtribuidoIdOrderByDataDesc(Pageable pages,String titulo,String estado,String prioridade,String usuarioAtribuidoId);
 
 	/*
 	get by numero do incidente @param numero do incidente 
 	*/
 	
-	Page<Ticket> findByNumero(Pageable pages,String numero);
+	Page<Ticket> findByNumero(Pageable pages,Integer numero);
 
 }

@@ -56,17 +56,17 @@ public class TicketServiceImpl implements TicketService {
 	@Override
 	public Page<Ticket> findByParametersAndCurrentUser(int page, int count, String titulo, String estado,String prioridade, String usuarioId)				{
 		Pageable pages = new PageRequest(page, count); 
-		return this.ticketRepository.findByTituloIgnoreCaseContainingAndEstadoIgnoreCaseContainingAndPrioridadeIgnoreCaseContainingAndUsuarioAtribuidoIdIgnoreCaseContainingOrderByDataDesc(pages, titulo, estado, prioridade, usuarioId);
+		return this.ticketRepository.findByTituloIgnoreCaseContainingAndEstadoIgnoreCaseContainingAndPrioridadeIgnoreCaseContainingAndUsuarioAtribuidoIdOrderByDataDesc(pages, titulo, estado, prioridade, usuarioId);
 	}
 	@Override
-	public Page<Ticket> findByNumber(int page, int count, String numero)																					{
+	public Page<Ticket> findByNumber(int page, int count, Integer numero)																					{
 		Pageable pages = new PageRequest(page, count); 
 		return this.ticketRepository.findByNumero(pages, numero);
 	}
 	@Override
 	public Page<Ticket> findByParametersAndAssignedUser(int page, int count, String titulo, String estado,String prioridade, String usuarioAtribuidoId) 	{
 		Pageable pages = new PageRequest(page, count); 
-		return this.ticketRepository.findByTituloIgnoreCaseContainingAndEstadoIgnoreCaseContainingAndPrioridadeIgnoreCaseContainingAndUsuarioAtribuidoIdIgnoreCaseContainingOrderByDataDesc(pages, titulo, estado, prioridade, usuarioAtribuidoId);
+		return this.ticketRepository.findByTituloIgnoreCaseContainingAndEstadoIgnoreCaseContainingAndPrioridadeIgnoreCaseContainingAndUsuarioAtribuidoIdOrderByDataDesc(pages, titulo, estado, prioridade, usuarioAtribuidoId);
 	}
 
 }

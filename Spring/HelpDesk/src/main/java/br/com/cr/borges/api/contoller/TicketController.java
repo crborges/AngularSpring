@@ -63,7 +63,7 @@ public class TicketController {
 					}
 					
 					ticket.setEstado(EstadosEnum.getStatus("NOVO"));/*seta estado como novo*/
-					ticket.setUsuario(getUsuarioByRequest(request));/*seta o cara logado como dono*/
+					ticket.setUsuarioAtribuido(getUsuarioByRequest(request));/*seta o cara logado como dono*/
 					ticket.setData(new Date());/*seta a data da inclusão*/
 					ticket.setNumero(gerarNumeroIncidente());/*gera um numero apr ao ticket*/
 					Ticket persistido = (Ticket) ticketService.createOrUpdate(ticket);
@@ -175,27 +175,26 @@ public class TicketController {
 	
 	
 	
-	@GetMapping("{page}/{count}/{numero}/{titulo}/{estado}/{prioridade}")  ///{atribuido}
+	@GetMapping("{page}/{count}/{numero}/{titulo}/{estado}/{prioridade}/{atribuido}")  //
 	@PreAuthorize("hasAnyRole('ROLE_CLIENTE','ROLE_TECNICO')")
 	public ResponseEntity<Response<Page<Ticket>>> findByParams(
 				HttpServletRequest 				request, 
 				@PathVariable("page") 			int page, 
 				@PathVariable("count") 			int count,
-				@PathVariable("numero") 		String numero,
+				@PathVariable("numero") 		Integer numero,
 				@PathVariable("titulo")			String titulo,
 				@PathVariable("estado") 		String estado,
-				@PathVariable("prioridade")		String prioridade/*,
-				@PathVariable("atribuido")		boolean atribuido*/
+				@PathVariable("prioridade")		String prioridade,
+				@PathVariable("atribuido")		boolean atribuido
 				
 			){
 		titulo=titulo.equals("nao_informado") ? "" : titulo;
 		estado=estado.equals("nao_informado") ? "" : estado;
 		prioridade=prioridade.equals("nao_informado") ? "" : prioridade;
-		Boolean atribuido = false;
 		Response<Page<Ticket>> response = new Response<Page<Ticket>>();
 		Page<Ticket> tickets = null;
 		 
-		if(Integer.parseInt(numero) > 0) {
+		if(numero > 0) {
 			tickets = ticketService.findByNumber(page, count, numero);
 		}
 		else {
@@ -215,12 +214,12 @@ public class TicketController {
 	
 	
 	
-	@PutMapping(value="{id}/{estado}")
+	@PutMapping(value="/{id}/{estado}")
 	@PreAuthorize("hasAnyRole('ROLE_CLIENTE','ROLE_TECNICO')")
 	public ResponseEntity<Response<Ticket>> atualizarEstado(
-			HttpServletRequest 				request			, 
 			@PathVariable("id") 			String id		,
 			@PathVariable("estado")			String estado	,
+			HttpServletRequest 				request			,
 			@RequestBody 					Ticket ticket	,
 			BindingResult result							)
 		{
@@ -231,7 +230,7 @@ public class TicketController {
 					result.getAllErrors().forEach(Error->response.getErros().add(Error.getDefaultMessage()));
 					return ResponseEntity.badRequest().body(response);
 				}
-				Ticket existente = ticketService.findByid(ticket.getId());
+				Ticket existente = ticketService.findByid(id);
 				existente.setEstado(EstadosEnum.getStatus(estado));
 				if(estado.equals("DESIGNADO")) {
 					existente.setUsuarioAtribuido(getUsuarioByRequest(request));
