@@ -214,7 +214,7 @@ public class TicketController {
 	
 	
 	
-	@PutMapping(value="/{id}/{estado}")
+	@PutMapping(value="{id}/{estado}")
 	@PreAuthorize("hasAnyRole('ROLE_CLIENTE','ROLE_TECNICO')")
 	public ResponseEntity<Response<Ticket>> atualizarEstado(
 			@PathVariable("id") 			String id		,

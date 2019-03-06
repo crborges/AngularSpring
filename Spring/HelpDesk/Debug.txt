@@ -14,3 +14,5 @@
  [2m2019-03-04 13:50:00.143 [0;39m  [32mDEBUG [0;39m  [35m6776 [0;39m  [2m--- [0;39m  [2m[nio-8080-exec-4] [0;39m  [36mo.s.data.mongodb.core.MongoTemplate      [0;39m  [2m: [0;39m findOne using query: { "email" : "user@mail.com"} in db.collection: helpdesk.usuario
  [2m2019-03-04 13:50:00.147 [0;39m  [32m INFO [0;39m  [35m6776 [0;39m  [2m--- [0;39m  [2m[nio-8080-exec-4] [0;39m  [36m.c.c.b.a.s.j.jwtAutheticationTokenFilter [0;39m  [2m: [0;39m autenticado o usuario user@mail.com atraves do contexto de seguranca
  [2m2019-03-04 13:50:00.151 [0;39m  [32mDEBUG [0;39m  [35m6776 [0;39m  [2m--- [0;39m  [2m[nio-8080-exec-4] [0;39m  [36mo.s.data.mongodb.core.MongoTemplate      [0;39m  [2m: [0;39m find using query: { "numero" : 1042} fields: null for class: class br.com.cr.borges.api.entity.Ticket in collection: ticket
+usuarioAtribuido
+
