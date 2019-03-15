@@ -1,4 +1,5 @@
-import {usuario} from "./usuario.model";
+import { Usuario } from './usuario.model';
+
 export class Ticket{
 
    constructor(

@@ -8,15 +8,16 @@ MENU_LATERAL            MAIN CONTENT(SEM COMPONENTE SO ESPACÇO INTERNO)
                         FOOTER
 -->
 
-<app-header></app-header>
-<app-menu></app-menu>
+<app-header [hidden]="!ShowTemplate"></app-header>
+<app-menu  [hidden]="!ShowTemplate"></app-menu>
 
-<div class="content-wrapper">
+<div  [ngClass]="exibeBarraLateral()" >
   <section class="content-header">NOME ITEM AQUI</section>
   <section class="content">
-  SISTEMA AQUI
+    <!-- essa ag serve para renderizar as nossas rotas aqui-->
+  <router-outlet></router-outlet>
 
   </section>
 </div>
 
-<app-footer></app-footer>
+<app-footer [hidden]="!ShowTemplate"></app-footer>

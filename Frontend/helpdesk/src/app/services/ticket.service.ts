@@ -51,7 +51,7 @@ export class TicketService {
     ticket.titulo       = ticket.titulo       == null ? 'nao_informado'   : ticket.titulo;
     ticket.estado       = ticket.estado       == null ? 'nao_informado'   : ticket.estado;
     ticket.prioridade   = ticket.prioridade   == null ? 'nao_informado'   : ticket.prioridade;
-    return this.http.get(`${HELP_DESK_API}/api/ticket/${pagina}/${contador}/${ticket.numero}/${ticket.titulo}/${ticket.estado}/${ticket.prioridade}/${atribuido}`);
+    return this.http.get(`${HELP_DESK_API}/api/ticket/${pagina}/${contador}/${ticket.numero}/${ticket.titulo}/${ticket.estado}/${ticket.prioridade}/${atribuidosAMim}`);
   }
 
 
