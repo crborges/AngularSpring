@@ -1,3 +1,5 @@
+import { UserListarComponent } from './components/user-listar/user-listar.component';
+import { DialogService } from 'src/app/dialog.service';
 import { authGuard } from './components/security/auth.guard';
 import { AuthInterceptor } from './components/security/auth.interceptor';
 import { SharedService } from './services/shared.service';
@@ -11,9 +13,11 @@ import { MenuComponent } from './components/menu/menu.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/security/login/login.component';
-import { routes } from './components/home/app.routes';
+import { routes } from './app.routes';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule} from '@angular/forms';
+import { UserNovoComponent } from './components/user-novo/user-novo.component';
+
 
 @NgModule({
   declarations: [
@@ -22,18 +26,26 @@ import { FormsModule} from '@angular/forms';
       MenuComponent,
       FooterComponent,
       HomeComponent,
-      LoginComponent
+      LoginComponent,
+      UserNovoComponent,
+      UserListarComponent
   ],
   imports: [
       BrowserModule,
       HttpClientModule,
       FormsModule,
-      routes
+      routes,
   ],
   providers: [
       UserService,
       SharedService,
-      authGuard
+      DialogService,
+      authGuard,
+      {
+        provide : HTTP_INTERCEPTORS,
+        useClass: AuthInterceptor,
+        multi: true
+      }
   ],
   bootstrap: [
       AppComponent,

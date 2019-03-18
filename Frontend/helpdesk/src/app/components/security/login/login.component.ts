@@ -1,5 +1,5 @@
 import { CurrentUser } from '../../../services/model/current.user.model';
-import { routes } from './../../home/app.routes';
+import { routes } from '../../../app.routes';
 import { UserService } from './../../../services/user.service';
 import { SharedService } from './../../../services/shared.service';
 import { Usuario } from './../../../services/model/usuario.model';

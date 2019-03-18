@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { routes } from './../home/app.routes';
+import { routes } from '../../app.routes';
 import { SharedService } from './../../services/shared.service';
 import { Injectable } from "@angular/core";
 import { Router, ActivatedRouteSnapshot ,RouterStateSnapshot, CanActivate} from '@angular/router';
