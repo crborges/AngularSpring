@@ -1,0 +1,136 @@
+<div class="box">
+	<div class="box-header with-border">
+		<h3 class="box-title">Lista de Tickets</h3>
+	</div>
+	<div class="box-body">
+
+
+
+
+
+
+	<!--<form class="form-horizontal" #form_ticket_novo="ngForm" ></form>-->
+		<div class="box-body">
+
+      <div class="form-group"  *ngIf="shared.usuario.perfil == 'Técnico'">
+          <div class="checkbox">
+              <label>
+                <input
+                type="checkbox"
+                id="designadosAMin"
+                name="designadosAMin"
+                [(ngModel)]="designadosAMin"
+                >
+                  Somente os atribu&iacute;dos a mim
+              </label>
+          </div>
+      </div>
+      <div class="form-group" >
+				<label for="inputNumero" class="col-sm-2 control-label">N&uacute;mero</label>
+				<div class="col-sm-10">
+					<input
+					type="text"
+					class="form-control"
+					id="inputNumero"
+					name="inputNumero"
+					[(ngModel)]="ticketFiltro.numero"
+					>
+				</div>
+      </div>
+
+      <div class="form-group" >
+          <label for="inputTitulo" class="col-sm-2 control-label">T&iacute;tulo</label>
+          <div class="col-sm-10">
+            <input
+            type="text"
+            class="form-control"
+            id="inputTitulo"
+            name="inputTitulo"
+            [(ngModel)]="ticketFiltro.titulo"
+            >
+          </div>
+      </div>
+      <div class="form-group" >
+          <label for="inputEstado" class="col-sm-2 control-label">Estado</label>
+          <div class="col-sm-10">
+              <select
+              [(ngModel)]="ticketFiltro.estado"
+              class="form-control select2"
+              id="inputEstado"
+              name="inputEstado"
+              style="width: 100%"
+              >
+                  <option value="NOVO">       Novo      </option>
+                  <option value="DESIGNADO">  Designado </option>
+                  <option value="RESOLVIDO">  Resolvido </option>
+                  <option value="APROVADO">   Aprovado  </option>
+                  <option value="REPROVADO">  Reprovado </option>
+                  <option value="FECHADO">    Fechado   </option>
+            </select>
+          </div>
+      </div>
+      <div class="form-group" >
+          <label for="inputPrioridade" class="col-sm-2 control-label">Situa&ccedil;&atilde;o</label>
+          <div class="col-sm-10">
+              <select
+              [(ngModel)]="ticketFiltro.prioridade"
+              class="form-control select2"
+              id="inputPrioridade"
+              name="inputPrioridade"
+              style="width: 100%"
+              >
+                  <option value="Alta">     Alta   </option>
+                  <option value="Normal">   Normal </option>
+                  <option value="Baixa">    Baixa  </option>
+            </select>
+          </div>
+      </div>
+
+
+
+		</div>
+		<div class="box-footer">
+      <button                           type="button" class="btn btn-info pull-right" (click)="limparFiltros()" >Limpar Filtro</button>
+			<button style="margin-left: 15px" type="button" class="btn btn-info pull-right" (click)="findByParameters()" >Pesquisar</button>
+		</div>
+
+
+		<table class="table table-bordered">
+			<tbody>
+				<tr>
+					<th>N&uacute;mero</th>
+					<th>T&iacute;tulo</th>
+          <th>Prioridade</th>
+          <th>Estado</th>
+          <th>Criador</th>
+          <th>A&ccedil;&otilde;es</th>
+        </tr>
+				<tr  *ngFor="let tickets of listaTickets">
+					<td>{{ tickets.numero}}</td>
+					<td>{{ tickets.titulo }}</td>
+					<td>{{ tickets.prioridade }}</td>
+					<td>{{ tickets.estado }}</td>
+					<td>{{ tickets.usuario }}</td>
+          <td>
+                <button class="btn btn-primary" (click)="editar(tickets.id)" *ngIf="shared.usuario.perfil == 'Cliente'" >Editar</button>&nbsp;&nbsp;&nbsp;
+                <button class="btn btn-delete"  (click)="deletar(tickets.id)" *ngIf="shared.usuario.perfil == 'Cliente'" >Deletar</button>&nbsp;&nbsp;&nbsp;
+                <button class="btn btn-delete"  (click)="detalhes(tickets.id)">Detalhar</button>
+          </td>
+        </tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="box-footer clearfix">
+
+    <ul class="pagination pagination-sm no-margin pull-right">
+			<li>    <a href="" (click)="setPaginaAnterior($event)">«</a> 	</li>
+
+      <li *ngFor="let pagina  of pages; let i = index">
+        <a [ngClass]="{'pagination-focus': i==pagina}"  href="" (click)="setPagina(i,$event)">{{i+1}}</a>
+      </li>
+
+			<li>    <a href="" (click)="setProximaPagina($event)" >»</a>   </li>
+		</ul>
+
+  </div>
+</div>

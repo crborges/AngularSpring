@@ -5,7 +5,7 @@ import { NgForm } from '@angular/forms';
 import { SharedService } from 'src/app/services/shared.service';
 import { ActivatedRoute } from '@angular/router';
 import { RetornoAPI} from './../../services/model/retorno.api';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+
 @Component({
   selector: 'app-user-novo',
   templateUrl: './user-novo.component.html',
@@ -36,7 +36,7 @@ export class UserNovoComponent implements OnInit {
 
   findByID(id: string){
     this.usuarioService.buscarPorId(id).subscribe((respostaAPI: RetornoAPI)=>{
-      this.usuario=respostaAPI.data;
+      this.usuario=respostaAPI.dado;
       this.usuario.senha='';
           },err=>{
               this.showMessage({
@@ -50,7 +50,7 @@ export class UserNovoComponent implements OnInit {
     this.mensagem={};
     this.usuarioService.criarAtualizar(this.usuario).subscribe((respostaAPI: RetornoAPI)=>{
       this.usuario = new Usuario('','','','');
-      let usuarioRetorno: Usuario= respostaAPI.data;
+      let usuarioRetorno: Usuario= respostaAPI.dado;
       console.log('trabalho com ');//ok
       console.log(respostaAPI.dado.email);//ok assim
       this.form_user_novo.resetForm();//executa ok
@@ -74,7 +74,6 @@ export class UserNovoComponent implements OnInit {
 
   private showMessage(message: {type : string, text: string}): void{
     this.mensagem= message;
-    console.log('no metodo executor'+this.mensagem.text);
     this.CriaClasseCSS(message.type);
     setTimeout(() => {
         this.mensagem=undefined;

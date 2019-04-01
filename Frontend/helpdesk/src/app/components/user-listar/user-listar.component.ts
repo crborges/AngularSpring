@@ -1,10 +1,11 @@
-import { SharedService } from './../../services/shared.service';
-import { routes, ROUTES } from './../../app.routes';
+import { Usuario } from './../../services/model/usuario.model';
+import { ActivatedRoute } from '@angular/router';
 import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from 'src/app/services/shared.service';
 import { DialogService } from 'src/app/dialog.service';
 import { RetornoAPI } from 'src/app/services/model/retorno.api';
+import {  Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-listar',
@@ -14,15 +15,14 @@ import { RetornoAPI } from 'src/app/services/model/retorno.api';
 export class UserListarComponent implements OnInit {
 
   page: number=0;
-  contador:number=5;
+  contador:number=10;
   pages: Array<number>;
   shared: SharedService;
   mensagem: {};
   classCSS: {};
   listaUsuarios: [];
 
-
-  constructor(private dialogService: DialogService,private userService: UserService, private rota: ROUTES) {
+  constructor(private dialogService: DialogService,private userService: UserService, private rota : Router) {
     this.shared = SharedService.getInstance();
    }
 
@@ -32,9 +32,8 @@ export class UserListarComponent implements OnInit {
 
   findAll(page: number, contador: number){
       this.userService.buscarTodos(page,contador).subscribe((retornoApi: RetornoAPI)=>{
-          this.listaUsuarios=retornoApi['data']['content'];
-          this.pages=new Array(retornoApi['data']['totalPages']);
-
+          this.listaUsuarios=retornoApi['dado']['content'];
+          this.pages=new Array(retornoApi['dado']['totalPages']);
       },err=>{
         this.showMessage({
           type:'error',
@@ -45,16 +44,18 @@ export class UserListarComponent implements OnInit {
 
 
 
-  edit(id:string){
+  editar(id:string){
   this.rota.navigate(['/usuario-novo',id]);
   }
-  delete(id:string){
+
+
+  deletar(id:string){
     this.dialogService.confirmar('tem certeza que deseja excluir este usuário?').then((deletavel:boolean)=>{
         if(deletavel){
           this.mensagem={};
           this.userService.deletar(id).subscribe((respostaApi:RetornoAPI)=>{
               this.showMessage({
-                type:'sucees',
+                type:'success',
                 text: 'Usuário deletado'
               });
               this.findAll(this.page,this.contador);
@@ -66,10 +67,31 @@ export class UserListarComponent implements OnInit {
           });
         }
     });
+  }
 
+  setProximaPagina(event:any){
+    event.preventDefault();
+    if(this.page+1<this.pages.length){
+      this.page= this.page+1;
+      this.findAll(this.page,this.contador);
+    }
   }
 
 
+  setPaginaAnterior(event:any){
+    event.preventDefault();
+    if(this.page>0){
+      this.page= this.page-1;
+      this.findAll(this.page,this.contador);
+    }
+  }
+
+
+  setPagina(i,event:any){
+    event.preventDefault();
+      this.page= i;
+      this.findAll(this.page,this.contador);
+  }
 
   private showMessage(message: {type : string, text: string}): void{
     this.mensagem= message;

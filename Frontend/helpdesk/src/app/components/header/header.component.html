@@ -8,7 +8,7 @@
       <span class="sr-only">Toggle navigation</span>
     </a>
     <div class="navbar-custom-menu">
-      <p style="color: white">user_logado_mail@mail.com - perfil_user_logado | <button>Sair</button> </p>
+      <p style="color: white">{{shared.usuario.email}} - {{shared.usuario.perfil}} | <button  class="btn btn-alert pull-right" (click)="logout()" > Sair</button> </p>
     </div>
 
   </nav>

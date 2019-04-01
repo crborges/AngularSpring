@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
         this.shared.usuario=usuarioAutenticado.usuario;
         if      (usuarioAutenticado.usuario.perfil=="ROLE_ADMIN")     {this.shared.usuario.perfil="Administrador" ;}
         else if (usuarioAutenticado.usuario.perfil=="ROLE_CLIENTE")   {this.shared.usuario.perfil="Cliente"       ;}
-        else if (usuarioAutenticado.usuario.perfil=="ROLE_TECNICO ")  {this.shared.usuario.perfil="Técnico"       ;}
+        else if (usuarioAutenticado.usuario.perfil=="ROLE_TECNICO")   {this.shared.usuario.perfil="Técnico"       ;}
         else                                                          {this.shared.usuario.perfil="Desconhecido"  ;}
         this.shared.ShowTemplate.emit(true);
         this.router.navigate(['/']);

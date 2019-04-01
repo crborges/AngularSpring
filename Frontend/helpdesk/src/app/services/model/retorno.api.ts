@@ -1,5 +1,5 @@
 export class RetornoAPI{
 
-  public data : any;
+  public dado : any;
   public error : Array<string>;
 }

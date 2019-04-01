@@ -47,10 +47,15 @@ export class TicketService {
 
 
   buscarPorParametros(pagina: Number,contador: Number, atribuidosAMim : boolean,ticket:Ticket) {
-    ticket.numero       = ticket.numero       == null ? 0                 : ticket.numero;
-    ticket.titulo       = ticket.titulo       == null ? 'nao_informado'   : ticket.titulo;
-    ticket.estado       = ticket.estado       == null ? 'nao_informado'   : ticket.estado;
-    ticket.prioridade   = ticket.prioridade   == null ? 'nao_informado'   : ticket.prioridade;
+    ticket.numero       = ticket.numero       ==  '' ? 0                 : ticket.numero;
+    ticket.titulo       = ticket.titulo       ==  '' ? 'nao_informado'   : ticket.titulo;
+    ticket.estado       = ticket.estado       == null || '' ? 'nao_informado'   : ticket.estado;
+    ticket.prioridade   = ticket.prioridade   == null || '' ? 'nao_informado'   : ticket.prioridade;
+
+    console.log('|'+ticket.numero== ''+'|');
+
+    console.log(`${HELP_DESK_API}/api/ticket/${pagina}/${contador}/${ticket.numero}/${ticket.titulo}/${ticket.estado}/${ticket.prioridade}/${atribuidosAMim}`);
+
     return this.http.get(`${HELP_DESK_API}/api/ticket/${pagina}/${contador}/${ticket.numero}/${ticket.titulo}/${ticket.estado}/${ticket.prioridade}/${atribuidosAMim}`);
   }
 

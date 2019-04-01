@@ -11,23 +11,10 @@
         <a href="#"><i class="fa fa-circle text-success"></i> Online - Perfil_tipo</a>
       </div>
     </div>
-
-
-
-
-
-
-
-
-
-
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu tree" data-widget="tree">
       <li class="header" style="color:#fff">Navegação</li>
-
-
-
-      <li class="treeview">
+      <li class="treeview" *ngIf="shared.usuario.perfil == 'Administrador'">
         <a href="#">
           <i class="fa fa-circle-o"></i> <span>Usuario</span>
           <span class="pull-right-container">
@@ -36,13 +23,10 @@
         </a>
         <ul class="treeview-menu">
           <li><a [routerLink]="['/usuario-novo']"><i class="fa fa-circle-o"></i> criar</a></li>
-          <li><a href=" "><i class="fa fa-circle-o"></i> Visualizar</a></li>
+          <li><a [routerLink]="['/usuario-lista']"><i class="fa fa-circle-o"></i> Visualizar</a></li>
         </ul>
       </li>
-
-
-
-      <li class="treeview">
+      <li class="treeview"  *ngIf="shared.usuario.perfil != 'Administrador'">
         <a href="#">
           <i class="fa fa-circle-o"></i> <span>Ticket</span>
           <span class="pull-right-container">
@@ -50,29 +34,12 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href=" "><i class="fa fa-circle-o"></i> criar</a></li>
-          <li><a href=" "><i class="fa fa-circle-o"></i> Visualizar</a></li>
+          <li *ngIf="shared.usuario.perfil == 'Cliente'" ><a [routerLink]="['/ticket-novo']"><i class="fa fa-circle-o"></i> criar</a></li>
+          <li><a  [routerLink]="['/ticket-lista']"><i class="fa fa-circle-o"></i> Visualizar</a></li>
         </ul>
       </li>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      <li>
-        <a href="">
+      <li >
+        <a [routerLink]="['/resumo']">
           <i class="fa fa-angle-left"></i> <span>Resumo</span>
           <span><small class="label pull-right bg-red"> 0 Rejeitados</small></span><br>
           <span><small class="label pull-right bg-blue"> 0 Novos</small></span><br>
@@ -80,17 +47,8 @@
           <span><small class="label pull-right bg-green"> 0 Resolvidos</small></span><br>
           <span><small class="label pull-right bg-green"> 0 Aprovados</small></span><br>
           <span><small class="label pull-right bg-green"> 0 Encerrados</small></span><br>
-
-
-
-
-
         </a>
       </li>
-
-
-
-
       <li class="header" style="color:#fff">Acesso rápido</li>
       <li><a href="#"><i class="fa fa-circle-o"></i> <span>acesso 01</span></a></li>
       <li><a href="#"><i class="fa fa-circle-o"></i> <span>acesso 02</span></a></li>

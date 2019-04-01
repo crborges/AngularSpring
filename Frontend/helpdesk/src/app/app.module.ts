@@ -1,3 +1,4 @@
+import { TicketNovoComponent } from './components/ticket-novo/ticket-novo.component';
 import { UserListarComponent } from './components/user-listar/user-listar.component';
 import { DialogService } from 'src/app/dialog.service';
 import { authGuard } from './components/security/auth.guard';
@@ -17,6 +18,9 @@ import { routes } from './app.routes';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule} from '@angular/forms';
 import { UserNovoComponent } from './components/user-novo/user-novo.component';
+import { TicketListarComponent } from './components/ticket-listar/ticket-listar.component';
+
+
 
 
 @NgModule({
@@ -28,7 +32,9 @@ import { UserNovoComponent } from './components/user-novo/user-novo.component';
       HomeComponent,
       LoginComponent,
       UserNovoComponent,
-      UserListarComponent
+      UserListarComponent,
+      TicketNovoComponent,
+      TicketListarComponent
   ],
   imports: [
       BrowserModule,
