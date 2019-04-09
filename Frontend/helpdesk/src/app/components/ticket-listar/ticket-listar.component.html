@@ -47,6 +47,7 @@
             id="inputTitulo"
             name="inputTitulo"
             [(ngModel)]="ticketFiltro.titulo"
+
             >
           </div>
       </div>
@@ -90,10 +91,9 @@
 
 		</div>
 		<div class="box-footer">
-      <button                           type="button" class="btn btn-info pull-right" (click)="limparFiltros()" >Limpar Filtro</button>
-			<button style="margin-left: 15px" type="button" class="btn btn-info pull-right" (click)="findByParameters()" >Pesquisar</button>
+      <button style="margin-right:20px" type="button" class="btn btn btn-warning pull-right " (click)="limparFiltros()" >Limpar Filtro</button>&nbsp;&nbsp;&nbsp;
+			<button style="margin-left: 15px" type="button" class="btn btn-success pull-right" (click)="findByParameters()" >Pesquisar</button>
 		</div>
-
 
 		<table class="table table-bordered">
 			<tbody>
@@ -110,11 +110,11 @@
 					<td>{{ tickets.titulo }}</td>
 					<td>{{ tickets.prioridade }}</td>
 					<td>{{ tickets.estado }}</td>
-					<td>{{ tickets.usuario }}</td>
+					<td>{{ tickets.usuario.email }}</td>
           <td>
-                <button class="btn btn-primary" (click)="editar(tickets.id)" *ngIf="shared.usuario.perfil == 'Cliente'" >Editar</button>&nbsp;&nbsp;&nbsp;
-                <button class="btn btn-delete"  (click)="deletar(tickets.id)" *ngIf="shared.usuario.perfil == 'Cliente'" >Deletar</button>&nbsp;&nbsp;&nbsp;
-                <button class="btn btn-delete"  (click)="detalhes(tickets.id)">Detalhar</button>
+                <button class="btn btn-success" (click)="editar(tickets.id)" *ngIf="shared.usuario.perfil == 'Cliente'" >Editar</button>&nbsp;&nbsp;&nbsp;
+                <button class="btn btn-danger"  (click)="deletar(tickets.id)" *ngIf="shared.usuario.perfil == 'Cliente'" >Deletar</button>&nbsp;&nbsp;&nbsp;
+                <button class="btn btn-warning"  (click)="detalhes(tickets.id)">Detalhar</button>
           </td>
         </tr>
 			</tbody>

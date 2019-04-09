@@ -21,7 +21,10 @@ export class TicketService {
     }
     else{
       ticket.id = null;
+      //ticket.usuario= ticket.usuarioAtribuido;
       ticket.estado = 'NOVO';
+      //console.log("ticket da API");
+     // console.log(ticket);
       return this.http.post(`${HELP_DESK_API}/api/ticket`, ticket);
     }
   }
@@ -29,6 +32,7 @@ export class TicketService {
 
 
   buscarTodos(pagina: Number,contador: Number){
+    console.log(`para toda a lista busquei ${HELP_DESK_API}/api/ticket/${pagina}/${contador}`)
     return this.http.get(`${HELP_DESK_API}/api/ticket/${pagina}/${contador}`);
   }
 
@@ -47,10 +51,10 @@ export class TicketService {
 
 
   buscarPorParametros(pagina: Number,contador: Number, atribuidosAMim : boolean,ticket:Ticket) {
-    ticket.numero       = ticket.numero       ==  '' ? 0                 : ticket.numero;
+    ticket.numero       = ticket.numero       == 0 ? 0                 : ticket.numero;
     ticket.titulo       = ticket.titulo       ==  '' ? 'nao_informado'   : ticket.titulo;
-    ticket.estado       = ticket.estado       == null || '' ? 'nao_informado'   : ticket.estado;
-    ticket.prioridade   = ticket.prioridade   == null || '' ? 'nao_informado'   : ticket.prioridade;
+    ticket.estado       = ticket.estado       == '' ? 'nao_informado'    : ticket.estado;
+    ticket.prioridade   = ticket.prioridade   == '' ? 'nao_informado'    : ticket.prioridade;
 
     console.log('|'+ticket.numero== ''+'|');
 

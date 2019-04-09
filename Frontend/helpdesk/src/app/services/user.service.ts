@@ -14,7 +14,6 @@ export class UserService {
 
 
   login(usuario : Usuario){
-    console.log(usuario);
       return this.http.post(`${HELP_DESK_API}/api/auth`,usuario);
   }
 

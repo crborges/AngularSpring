@@ -35,7 +35,7 @@ public interface TicketRepository extends MongoRepository<Ticket, String>{
 	   	estado
 	   	prioridade
 	*/
-	Page<Ticket> findByTituloIgnoreCaseContainingAndEstadoAndPrioridadeOrderByDataDesc(Pageable pages,String titulo,String estado,String prioridade);
+	Page<Ticket> findByTituloIgnoreCaseContainingAndEstadoContainingAndPrioridadeContainingOrderByDataDesc(Pageable pages,String titulo,String estado,String prioridade);
 	
 	/*
 	Get by

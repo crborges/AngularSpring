@@ -15,7 +15,7 @@ import { RetornoAPI } from 'src/app/services/model/retorno.api';
 export class TicketListarComponent implements OnInit {
 
 
-  designadosAMin: boolean;
+  designadosAMin: boolean=false;
   page: number=0;
   contador:number=10;
   pages: Array<number>;
@@ -55,14 +55,11 @@ export class TicketListarComponent implements OnInit {
     this.ticketService.buscarPorParametros(this.page,this.contador,this.designadosAMin,this.ticketFiltro)
       .subscribe((retornoApi: RetornoAPI)=>{
       this.ticketFiltro.titulo = this.ticketFiltro.titulo == 'nao_informado' ? '' : this.ticketFiltro.titulo;
-      //this.ticketFiltro.estado = this.ticketFiltro.estado == 'nao_informado' ? '' : this.ticketFiltro.estado;
-      //this.ticketFiltro.prioridade = this.ticketFiltro.prioridade == 'nao_informado' ? '' : this.ticketFiltro.prioridade;
-      this.ticketFiltro.numero = this.ticketFiltro.numero ==  0 ? null : this.ticketFiltro.numero;
-      console.log("inerno");
-      console.log(this.ticketFiltro);
+      this.ticketFiltro.estado = this.ticketFiltro.estado == 'nao_informado' ? '' : this.ticketFiltro.estado;
+      this.ticketFiltro.prioridade = this.ticketFiltro.prioridade == 'nao_informado' ? '' : this.ticketFiltro.prioridade;
+      this.ticketFiltro.numero = this.ticketFiltro.numero ==  null ? 0 : this.ticketFiltro.numero;
       this.listaTickets=retornoApi['dado']['content'];
       this.pages=new Array(retornoApi['dado']['totalPages']);
-
     },err=>{
     this.showMessage({
       type:'error',

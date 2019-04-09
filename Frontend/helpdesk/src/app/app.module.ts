@@ -19,6 +19,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule} from '@angular/forms';
 import { UserNovoComponent } from './components/user-novo/user-novo.component';
 import { TicketListarComponent } from './components/ticket-listar/ticket-listar.component';
+import { TicketDetailComponent } from './components/ticket-detail/ticket-detail.component';
+import { ResumoComponent } from './components/resumo/resumo.component';
+
 
 
 
@@ -34,7 +37,9 @@ import { TicketListarComponent } from './components/ticket-listar/ticket-listar.
       UserNovoComponent,
       UserListarComponent,
       TicketNovoComponent,
-      TicketListarComponent
+      TicketListarComponent,
+      TicketDetailComponent,
+      ResumoComponent
   ],
   imports: [
       BrowserModule,

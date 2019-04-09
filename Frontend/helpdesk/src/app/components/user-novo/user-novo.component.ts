@@ -56,7 +56,7 @@ export class UserNovoComponent implements OnInit {
       this.form_user_novo.resetForm();//executa ok
       console.log('pos execucao ');//executa ok
       this.showMessage({ //
-        type: `sucess`,
+        type: `success`,
         text: `usuário criado ${respostaAPI.dado.email} com sucesso`
       });
       console.log('depois de tudo');

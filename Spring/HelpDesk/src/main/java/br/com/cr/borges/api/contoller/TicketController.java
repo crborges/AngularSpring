@@ -63,7 +63,7 @@ public class TicketController {
 					}
 					
 					ticket.setEstado(EstadosEnum.getStatus("NOVO"));/*seta estado como novo*/
-					ticket.setUsuarioAtribuido(getUsuarioByRequest(request));/*seta o cara logado como dono*/
+					ticket.setUsuario(getUsuarioByRequest(request));/*seta o cara logado como dono*/
 					ticket.setData(new Date());/*seta a data da inclusão*/
 					ticket.setNumero(gerarNumeroIncidente());/*gera um numero apr ao ticket*/
 					Ticket persistido = (Ticket) ticketService.createOrUpdate(ticket);

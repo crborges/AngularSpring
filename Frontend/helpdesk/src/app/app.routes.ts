@@ -7,6 +7,8 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/security/login/login.component';
 import { Routes, RouterModule,  } from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
+import { TicketDetailComponent } from './components/ticket-detail/ticket-detail.component';
+import { ResumoComponent } from './components/resumo/resumo.component';
 
 
 export const ROUTES: Routes =[
@@ -17,13 +19,10 @@ export const ROUTES: Routes =[
   {path:'usuario-lista', component: UserListarComponent,canActivate: [authGuard]},
   {path:'ticket-novo', component: TicketNovoComponent,canActivate: [authGuard]},
   {path:'ticket-novo/:id', component: TicketNovoComponent,canActivate: [authGuard]},
-  {path:'ticket-lista', component: TicketListarComponent,canActivate: [authGuard]}
-  /*
-  {path:'ticket-detalhe', component: TicketListarComponent,canActivate: [authGuard]}
-
-
+  {path:'ticket-lista', component: TicketListarComponent,canActivate: [authGuard]},
+  {path:'ticket-detalhe/:id', component: TicketDetailComponent,canActivate: [authGuard]},
   {path:'resumo', component: ResumoComponent,canActivate: [authGuard]}
-  */
+
 
 
 

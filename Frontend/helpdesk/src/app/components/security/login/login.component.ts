@@ -27,7 +27,6 @@ export class LoginComponent implements OnInit {
 
 
     this.message="";
-    console.log(this);
     this.userService.login(this.usuario).subscribe((usuarioAutenticado: CurrentUser)=>{
         this.shared.token= usuarioAutenticado.token;
         this.shared.usuario=usuarioAutenticado.usuario;

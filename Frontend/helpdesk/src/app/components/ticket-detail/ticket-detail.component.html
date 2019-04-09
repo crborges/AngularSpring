@@ -1,0 +1,68 @@
+<div class="col-md-10" style="margin-left: 0%">
+  <div class="box bos-info">
+    <div class="box-header whith-border">
+        <h3>Detahes do Ticket</h3>
+    </div>
+
+    <form class="form-horizontal">
+      <div [ngClass]="classCSS" role="alert" *ngIf="mensagem" >
+        <strong>{{mensagem.text}}</strong>
+      </div>
+
+      <div class="box-body">
+        <ul class="list-group list-group-unboarded">
+            <li class="list-group-item">
+              <b>N&uacute;mero:</b><span>{{ticket.numero}}</span>
+              <span class="pull-right"> <b>T&iacute;tulo:</b><span>{{ticket.titulo}}</span></span>
+            </li>
+
+            <li class="list-group-item">
+              <b>Prioridade:</b><span>{{ticket.prioridade}}</span>
+              <span class="pull-right"> <b>Criado por :</b><span>{{ticket?.usuario?.email}}</span></span>
+            </li>
+
+            <li class="list-group-item">
+              <b>Estado:</b><span>{{ticket.estado}}</span>
+              <span class="pull-right"> <b>Criado por :</b><span>{{ticket?.usuarioAtribuido?.email}}</span></span>
+            </li>
+
+            <li class="list-group-item">
+              <b>Data:</b><span>{{ticket.data | date :'dd/MM/yyyy'}}</span>
+              <span class="pull-right"> <b>Descri&ccedil;&atilde;o:</b><span>{{ticket.descricao}}</span></span>
+            </li>
+
+            <li class="list-group-item">
+              <span><img [src]="ticket.imagem" width="450px" height="370px"></span>
+              <span class="pull-right">
+                  <table class="table table-bordered">
+                    <tr>
+                      <td>Usu&aacute;rio alterador</td>
+                      <td>Data Altera&ccedil;&atilde;o</td>
+                      <td>Estado</td>
+                    </tr>
+                    <tr *ngFor="let alteracao of ticket.alteracoes">
+                      <td>{{alteracao?.usuarioAlteracao?.email}}</td>
+                      <td>{{alteracao?.dataAlteracaoEstado | date :'dd/MM/yyyy HH:mm:ss'}}</td>
+                      <td>{{alteracao?.estado}}</td>
+                    </tr>
+                  </table>
+              </span>
+            </li>
+
+        </ul>
+
+      </div>
+
+
+      <div class="box-footer">
+        <button *ngIf="shared.usuario.perfil=='Técnico' && ticket.estado=='NOVO'"                                              (click)="AlterarTicket('DESIGNADO')" class="btn btn-primary">Aceitar Ticket</button>
+        <button *ngIf="shared.usuario.perfil=='Técnico' && (ticket.estado=='DESIGNADO' || ticket.estado=='REPROVADO'  )"       (click)="AlterarTicket('RESOLVIDO')" class="btn btn-primary">Resolver</button>
+        <button *ngIf="shared.usuario.perfil=='Cliente' && ticket.estado=='RESOLVIDO'"                                         (click)="AlterarTicket('APROVADO')" class="btn btn-primary">Aprovar</button>
+        <button *ngIf="shared.usuario.perfil=='Cliente' && ticket.estado=='RESOLVIDO'"                                         (click)="AlterarTicket('REPROVADO')" class="btn btn-primary">Reprovar</button>
+        <button *ngIf="shared.usuario.perfil=='Técnico' && ticket.estado=='APROVADO'"                                         (click)="AlterarTicket('FECHADO')" class="btn btn-primary">Fechar</button>
+
+      </div>
+
+    </form>
+  </div>
+</div>

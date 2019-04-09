@@ -50,7 +50,7 @@ public class TicketServiceImpl implements TicketService {
 	@Override
 	public Page<Ticket> findByParameters(int page, int count, String titulo, String estado, String prioridade) 												{
 		Pageable pages = new PageRequest(page, count); 	
-		return this.ticketRepository.findByTituloIgnoreCaseContainingAndEstadoAndPrioridadeOrderByDataDesc(pages, titulo, estado, prioridade);			
+		return this.ticketRepository.findByTituloIgnoreCaseContainingAndEstadoContainingAndPrioridadeContainingOrderByDataDesc(pages, titulo, estado, prioridade);			
 	}
 	
 	@Override
