@@ -1,3 +1,32 @@
-<p>
-  resumo works!
-</p>
+<div class="col-md-10" style="margin-left: 0%">
+    <div [ngClass]="classCSS" role="alert" *ngIf="mensagem" >
+        <strong>{{mensagem.text}}</strong>
+      </div>
+    <div class="box bos-info">
+      <div class="box-header whith-border">
+          <h3>Resumo</h3>
+            <div class="box-body">
+                <ul class="list-group list-group-unboardead">
+                    <li class="list-group-item">
+                       <b>Novos:</b><span class="pull-right"><span>{{resumo?.totalNovo}}</span></span>
+                    </li>
+                    <li class="list-group-item">
+                        <b>Resolvidos:</b><span class="pull-right"><span>{{resumo?.totalResolvido}}</span></span>
+                     </li>
+                     <li class="list-group-item">
+                        <b>Aprovados:</b><span class="pull-right"><span>{{resumo?.totalAprovado}}</span></span>
+                     </li>
+                     <li class="list-group-item">
+                        <b>Reprovados:</b><span class="pull-right"><span>{{resumo?.totalReprovados}}</span></span>
+                     </li>
+                     <li class="list-group-item">
+                        <b>Atribuidos:</b><span class="pull-right"><span>{{resumo?.totalAtribuidos}}</span></span>
+                     </li>
+                     <li class="list-group-item">
+                        <b>Fechados:</b><span class="pull-right"><span>{{resumo?.totalFechados}}</span></span>
+                     </li>
+                     </ul>
+            </div>
+      </div>
+    </div>
+  </div>
