@@ -79,11 +79,12 @@ constructor(private ticketService : TicketService, private rotas: ActivatedRoute
         text:' tamanho maximo da iamggem e de 2 mb'
       });
     }
+
     else{
       this.ticket.imagem='';
       var reader = new FileReader();
       reader.onloadend=(e: Event)=>{
-      this.ticket.imagem =reader.result;
+          this.ticket.imagem =reader.result;
       }
       reader.readAsDataURL(event.target.files[0])
     }
